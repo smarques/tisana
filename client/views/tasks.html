@@ -1,0 +1,35 @@
+
+
+<template name="tasks">
+{{#if hasTasks}}
+<table id="tasks" class="content table table-striped table-bordered table-hover">
+ <thead>
+    <tr>
+      <th>Task</th>
+   	  <th>Estimated Time</th>
+   	  <th>Worked Time</th>
+   	  <th></th>
+    </tr>
+  </thead>
+    <tbody>
+{{#each tasks}}
+	<tr class="task" id="{{_id}}">
+		<td>
+				<p>{{details.name}}</p>
+				<p>{{details.notes}}</p>
+		</td>
+		<td>
+		{{estimatedSecs}}
+		</td>	
+		<td>
+		{{workedSecs}}
+		</td>		
+		<td>
+		  <button class="stopwatch btn btn-large btn-primary" type="button">START</button>
+		</td>	
+	</tr>
+{{/each}}
+ </tbody>
+</table>
+{{/if}}
+</template>

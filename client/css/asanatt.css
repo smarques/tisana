@@ -1,1 +1,19 @@
 /* CSS declarations go here */
+body{
+	padding-top:50px;
+}
+#login-buttons .login-display-name{
+	line-height: 40px;
+}
+#login-buttons{
+	float:right;
+	 color: #999999;
+}
+#asloader{
+	width:30px;
+	height:30px;
+	position:absolute;
+	top:4px;
+	left:10px;
+	
+}

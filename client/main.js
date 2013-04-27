@@ -1,10 +1,15 @@
 Tasks = new Meteor.Collection("Tasks");
-Loader = new Spinner();
+Loader = new Spinner({color:'#FFF', radius:5, length:8});
 showLoader = function()
 {
-	  Loader.spin(document.getElementsByTagName("body")[0]);
+	
+	 Loader.spin(document.getElementById("asloader"));
 };
-stopLoader = function(){Loader.stop();};
+stopLoader = function(){
+	Loader.stop();
+	
+};
+
 Template.topbar.events({
     'click #sync' : function () {
       // template data, if any, is available in 'this'
@@ -20,6 +25,7 @@ Template.topbar.events({
     'click #projects li': function()
     {
     	Session.set('currentProject', this.id);
+    	Session.set('currentProjectName', this.name);
     }
   });
   Template.topbar.helpers({
@@ -47,13 +53,37 @@ Template.topbar.events({
 	  {
 		  return Session.get('currentProject');
 	  },
+	  'workspaceMenuLabel':function()
+	  {
+		  
+		  return Session.get('currentWorkspaceName') || 'Workspaces';
+	  },
+	  'projectMenuLabel':function()
+	  {
+		  
+		  return Session.get('currentProjectName') || 'Projects';
+	  }
   });
   Template.tasks.helpers({
 	"tasks":function()
 	{
 		return Tasks.find();
+	},
+	"hasTasks":function()
+	{
+		return Tasks.find().count();
 	}
-  })
+  });
+  Template.tasks.events({
+
+	    'click .stopwatch': function()
+	    {
+	    	console.log(this);
+	    	$('#tasks .stopwatch').removeClass('btn-danger');
+	    	$('#'+this._id+" .stopwatch").addClass('btn-danger');
+	    	
+	    }  
+  } );
   requestReauthorization = function( err )
   {
 	  if(err.error == 401)

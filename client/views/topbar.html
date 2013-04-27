@@ -1,0 +1,54 @@
+<template name="topbar">
+<div class="navbar-inner">
+		<div class="container">
+		
+		<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+     
+          <a class="brand" href="#">Asana Time Tracker</a>
+		<ul class="nav">
+		
+			{{#if userLogged}}
+				
+				
+				 <li class="dropdown">
+				<a class="dropdown-toggle"
+			       data-toggle="dropdown"
+			       href="#">
+			        {{workspaceMenuLabel}}
+			        <b class="caret"></b>
+			      </a>
+				<ul id="workspaces" class="dropdown-menu">
+				{{#each workspaces}}
+					<li><a href="#">{{name}}</a></li>
+				{{/each}}
+				</ul>
+				</li>
+			{{/if}}
+			{{#if workspaceSelected}}
+				<input id="sync" type="button" class="btn" value="Sync {{currentWorkspaceName}} With Asana">
+				<li class="dropdown">
+				<a class="dropdown-toggle"
+			       data-toggle="dropdown"
+			       href="#">
+			        {{projectMenuLabel}}
+			        <b class="caret"></b>
+			      </a>
+				<ul id="projects" class="dropdown-menu">
+					
+					{{#each projects}}
+						<li><a href="#">{{name}}</a></li>
+					{{/each}}
+					</ul>
+					
+				</li>
+				{{/if}}
+		
+		</ul>
+		{{loginButtons}} 
+  		</div>
+	</div>
+</template>
