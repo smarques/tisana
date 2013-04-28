@@ -17,3 +17,6 @@ body{
 	left:10px;
 	
 }
+#tasks button.stopwatch{
+	width:90px;
+}
