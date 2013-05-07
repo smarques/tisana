@@ -2,6 +2,39 @@
 body{
 	padding-top:50px;
 }
+/********** clearable inputs *****/
+input.clearable{
+	border-width:0;
+	outline:none;
+}
+.divclearable {
+    border: 2px solid grey;
+    display: inline-block;
+    margin: 0 5px 2px;
+    padding: 1px 5px;
+    vertical-align: middle;
+}
+.divclearable.active{
+	 border-color: #006DCC;
+}
+a.clearlink {
+	background: url("/img/close-button.png") no-repeat scroll 0 0 transparent;
+	background-position: center center;
+	cursor: pointer;
+	display: -moz-inline-stack;
+	display: inline-block;
+	zoom:1;
+	*display:inline;	
+	height: 12px;
+	width: 12px;
+	z-index: 2000;
+	border: 0px solid;
+}
+a.clearlink:hover {
+	background: url("/img/close-button.png") no-repeat scroll -12px 0 transparent;
+	background-position: center center;
+}
+/*******************/
 #login-buttons .login-display-name{
 	line-height: 40px;
 }
@@ -19,4 +52,20 @@ body{
 }
 #tasks button.stopwatch{
 	width:90px;
+}
+/**********FOOTER*****/
+#footer
+{
+	color:white;
+	background-color:black;
+	text-align:right;
+	padding: 0 5px;
+}
+#selectedTasks{
+	float:left;
+}
+#totalSessionTime
+{
+	
+	float:right;
 }

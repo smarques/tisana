@@ -5,7 +5,7 @@
 <table id="tasks" class="content table table-striped table-bordered table-hover">
  <thead>
     <tr>
-      <th>Task</th>
+      <th>Task <div class="divclearable {{#if currentSearchString}}active{{/if}}"><input id="taskSearch" class="clearable" value="{{currentSearchString}}"><a class="clearlink clearTaskSearch" href="javascript:" title="Click to clear this textbox"></a></div></th>
    	  <th>Estimated Time</th>
    	  <th>Worked Time</th>
    	  <th></th>
@@ -15,10 +15,18 @@
 {{#each tasks}}
 	<tr class="task" id="{{_id}}">
 		<td>
-				<p>{{details.name}}</p>
-				<p>{{details.notes}}</p>
+				{{#if taskHasDetails}}
+				<p><a href="javascript:" class="taskname" data-toggle="collapse" data-target="#taskdetails_{{_id}}">{{details.name}}</a></p>
+				<p class="taskdetails collapse" id="taskdetails_{{_id}}" >{{details.notes}}</p>
+				{{else}}
+				<p><span class="taskname" >{{details.name}}</span></p>
+				{{/if}}
+				{{#each tags}}
+						<span class="label tag">{{name}}</span>
+				{{/each}}
+			 	
 		</td>
-		<td>
+		<td> 
 		{{estimatedSecs}}
 		</td>	
 		<td>
@@ -26,12 +34,14 @@
 		({{formatWorkedSessionSecs}})
 		</td>		
 		<td>
-		  <button class="stopwatch btn btn-large btn-primary" type="button">START</button>
+		  <button class="stopwatch btn btn-primary" type="button">START</button>
 		</td>	
 	</tr>
 {{/each}}
  </tbody>
 </table>
 {{/if}}
+
+
 
 </template>

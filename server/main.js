@@ -1,7 +1,7 @@
 Tasks = new Meteor.Collection("Tasks");
 
 Meteor.startup(function () {
-    // code to run on server at startup
+   
   });
 
 Meteor.methods({
@@ -17,7 +17,7 @@ Meteor.methods({
 			var user = Meteor.user();
 			var wp=AsanaClient.getTasks(wspace, proj,user.services.asana.id);
 			AsanaClient.syncTasks(wp);
-			console.log(wp);
+			//console.log(wp);
 		  
 	  },
 	  resetAsana: function()
@@ -43,12 +43,3 @@ Meteor.methods({
 	 
 	}); 
 
-Meteor.publish('userProjectTasks', function (projectId) {
-	  return Tasks.find({
-		  $and: [
-		
-		  {"details.projects.id":projectId},
-		  {"details.completed":false}
-		  ]
-		  });
-	});

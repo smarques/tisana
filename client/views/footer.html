@@ -1,3 +1,12 @@
 <template name="footer">
-<div id="totalSessionTime">Total Work Time committed in this session: <span class="time">{{totalSessionTime}}</span></div>
+<div id="footer" class="navbar navbar-fixed-bottom">
+<div id="selectedTasks">{{selectedTasks}} selected tasks</div>
+<div id="totalSessionTime">
+{{#if runningTaskShortName}}
+	Working on: {{runningTaskShortName}}...
+	{{/if}}
+	{{#if totalSessionTime}}
+	Total Work Time in this session: <span class="time">{{totalSessionTime}}</span>
+	{{/if}}
+</div>
 </template>

@@ -22,7 +22,7 @@ AsanaClient._query = function (method, url)
 		    console.log("Content issue: ", result.statusCode,result.content );
 		    if(result.statusCode == '401' )
 		    {
-		    	throw new Meteor.Error(401, "Unauthorized");;
+		    	throw new Meteor.Error(401, "Unauthorized");
 		    }
 		    else
 		    {
@@ -61,6 +61,9 @@ AsanaClient.getFullTask = function(taskid)
 	var url = "/tasks/"+taskid;	
 	var res = this._query('GET', url);
 	return res.data;
+};
+AsanaClient.getUserProfile = function (uid)
+{//@todo
 };
 AsanaClient.syncTasks = function(mytasks)
 {
