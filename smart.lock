@@ -1,0 +1,31 @@
+{
+  "meteor": {
+    "git": "https://github.com/meteor/meteor.git",
+    "branch": "master",
+    "commit": "bfe4b72ebec4367eaddcdf0887fcf5e649d9dcb8"
+  },
+  "dependencies": {
+    "basePackages": {
+      "accounts-asana": {},
+      "accounts-ui-bootstrap-dropdown": {},
+      "sugar": {}
+    },
+    "packages": {
+      "accounts-asana": {
+        "git": "https://github.com/productiveme/accounts-asana.git",
+        "tag": "v0.1.1",
+        "commit": "2e1c28b278e73b76fcee03c4fb9553861c53b418"
+      },
+      "accounts-ui-bootstrap-dropdown": {
+        "git": "https://github.com/erobit/meteor-accounts-ui-bootstrap-dropdown.git",
+        "tag": "v0.1.0",
+        "commit": "e66558aaa4dc0d85c6ddb63bd2289b38c2b793f6"
+      },
+      "sugar": {
+        "git": "https://github.com/bevanhunt/meteor-sugar.git",
+        "tag": "v0.0.9",
+        "commit": "751a4465e0a7d7e4e800e794ca1e6a449e15e63d"
+      }
+    }
+  }
+}

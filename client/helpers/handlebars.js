@@ -8,3 +8,7 @@ Handlebars.registerHelper('isAdmin', function(showError) {
     return false;
   }
 });
+Handlebars.registerHelper('online', function(showError) {
+	console.log(Meteor.status());
+	 return true;
+	});

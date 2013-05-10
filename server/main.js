@@ -26,10 +26,11 @@ Meteor.methods({
 	  },
 	  listWorkspaces: function(){
 			//this.unblock();
-		  AsanaClient.setToken(Meteor.call('getAccessToken'));
-		 var wp = AsanaClient.getWorkspaces();
-		 // console.log('pippo');
-		  //return "pippo";
+		 
+		
+			  	AsanaClient.setToken(Meteor.call('getAccessToken'));
+			  	var wp = AsanaClient.getWorkspaces();
+		
 		  return wp;
 	  },
 	  listWorkspaceProjects: function(workspace)

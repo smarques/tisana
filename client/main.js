@@ -37,8 +37,10 @@ requestReauthorization = function( err )
 		  showLoader();
 		  Meteor.call('listWorkspaces', function(err, data) {
 			  stopLoader();
+			 
 			  if (err)
 				  {
+				 
 			    requestReauthorization(err);
 				  }
 

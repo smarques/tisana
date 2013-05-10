@@ -5,6 +5,7 @@
   },
   "packages": {
     "accounts-asana": {},
-    "accounts-ui-bootstrap-dropdown": {}
+    "accounts-ui-bootstrap-dropdown": {},
+    "sugar": {}
   }
 }

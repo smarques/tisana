@@ -1,28 +1,4 @@
-updateTaskSearch = function()
-{
-	Session.set('taskSearch',$('#taskSearch').val());
-}; 
-getSelectedTasks = function()
-{
-	var search = Session.get( 'taskSearch' );
-	
-	if(search)
-	{
-		var mongoDbArr = [];
-		mongoDbArr.push({'details.name': new RegExp(search,"i")});
-		mongoDbArr.push({'details.notes': new RegExp(search,"i")});
-		mongoDbArr.push({'details.tags.name': new RegExp(search,"i")});
-		return Tasks.find( { $or: mongoDbArr } );
-	}
-	else
-	{
-		return Tasks.find();
-	}
-};
-clearTaskSearch = function()
-{
-	Session.set('taskSearch','');
-}
+
 Template.tasks.rendered = function()
 {
 	//$('input.clearable').clearable();
