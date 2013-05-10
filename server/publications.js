@@ -27,3 +27,11 @@ Meteor.publish('userWorkspaceTasks', function (wsId) {
 		  ]
 		  });
 	});
+Meteor.publish('allUsers', function() {
+	  if (this.userId && isAdminById(this.userId)) {
+	    // if user is admin, publish all fields
+	    return Meteor.users.find();
+	  }else{
+		  return false;
+	  }
+	});

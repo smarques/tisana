@@ -5,8 +5,9 @@
 
 <body>	
   		{{> topbar}}
-<div class="container">
-  {{> tasks }}
+<div class="container {{currentPage}}">
+
+    {{renderPage}}
   </div>
    {{> footer }}
 </body>

@@ -6,6 +6,7 @@
   "packages": {
     "accounts-asana": {},
     "accounts-ui-bootstrap-dropdown": {},
-    "sugar": {}
+    "sugar": {},
+    "router": {}
   }
 }
