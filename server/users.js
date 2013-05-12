@@ -4,7 +4,14 @@ Accounts.onCreateUser(function(options, user){
   
   // if this is the first user ever, make them an admin, (stolen from meteor-teloscope, thank you!)
   if ( !Meteor.users.find().count() )
+	  {
     user.isAdmin = true;
-
+    user.profile.role='admin';
+    
+	  }
+  else
+	  {
+	  user.profile.role='user';
+	  }
   return user;
 });

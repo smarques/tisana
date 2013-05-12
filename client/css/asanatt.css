@@ -69,3 +69,18 @@ a.clearlink:hover {
 	
 	float:right;
 }
+
+/****users ****/
+div.usericon{
+	background-repeat: no-repeat;
+	width:43px;
+	height:43px;
+}
+div.usericon.admin
+{
+	background-image: url(/img/users/admin.png);
+}
+div.usericon.user
+{
+	background-image: url(/img/users/user.png);
+}

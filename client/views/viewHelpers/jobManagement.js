@@ -46,6 +46,18 @@ stopRunningJobs = function()
 		Session.set('runningTaskName',null);
 		Session.set('runningTaskId',null);
 		Session.set('runningTaskSeconds', 0 );
+		Meteor.users.update({_id:Meteor.userId()},
+				{
+				$set:{
+					'currentlyWorkingOn':
+						{
+							'name':null,
+							'taskId':null,
+							'elapsedSeconds':null
+							
+						}
+					}
+				});
 	}
 	
 };
@@ -57,3 +69,35 @@ addSessionTimeOnTask = function(secs, taskId)
 	else st[taskId]=secs;
 	Session.set('timeOnTasks', st);
 };
+
+startTask = function(task)
+{
+	Session.set('runningTaskName',task.details.name);
+	Session.set('runningTaskId',task._id);
+	 Session.set('runningTaskSeconds', 0 );
+	Meteor.users.update({_id:Meteor.userId()},
+		{
+		$set:{
+			'currentlyWorkingOn':
+				{
+					'name':task.details.name,
+					'taskId':task._id
+				}
+			}
+		});
+};
+
+setRunningTaskElapsedSeconds = function(secs)
+{
+	Session.set('runningTaskSeconds', secs );
+	if (secs % 10 == 0) 
+	{
+		Meteor.users.update({_id:Meteor.userId()},
+				{
+				$set:{
+					'currentlyWorkingOn.elapsedSeconds':secs
+					}
+				});
+	}
+};
+

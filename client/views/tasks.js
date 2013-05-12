@@ -46,7 +46,9 @@ Template.tasks.helpers({
 	    		//start
 		    	$('#'+this._id+" .stopwatch").addClass('btn-danger');
 		    	$('#'+this._id+" .stopwatch").stopwatch().bind('tick.stopwatch', function(e, elapsed){
-		    		 Session.set('runningTaskSeconds', elapsed / 1000 );
+
+		    		setRunningTaskElapsedSeconds( elapsed / 1000); 
+		    		
 		    		/*console.log( elapsed );
 		    		if (elapsed % 30000 == 0) {
 		    	       Session.set('runningTaskSeconds', elapsed / 30000 );
@@ -55,8 +57,9 @@ Template.tasks.helpers({
 		    	});
 	    		$('#'+this._id+" .stopwatch").stopwatch().stopwatch('start');
 	    		//console.log(this);
-	    		Session.set('runningTaskName',this.details.name);
-	    		Session.set('runningTaskId',this._id);
+	    		/*Session.set('runningTaskName',this.details.name);
+	    		Session.set('runningTaskId',this._id);*/
+	    		startTask(this);
 	    	}
 	    	/*
 	    	$('#'+this._id+" .stopwatch").stopwatch().stopwatch('start')*/

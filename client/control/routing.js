@@ -1,6 +1,6 @@
 Meteor.Router.add({
     '/': 'tasks',
-    '/users': 'users'
+       	'/users': 'users'
   });
 Meteor.startup(function() {
     Meteor.autorun(function() {

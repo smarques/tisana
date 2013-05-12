@@ -1,2 +1,30 @@
-<template name="users">pippo
+<template name="users">
+<table id="users" class="content table table-striped table-bordered table-hover">
+ <thead>
+    <tr>
+      <th>User <div class="divclearable {{#if currentSearchString}}active{{/if}}"><input id="userSearch" class="clearable" value="{{currentSearchString}}"><a class="clearlink clearUserSearch" href="javascript:" title="Click to clear this textbox"></a></div></th>
+   	  <th>Role</th>
+   	  <th>Hourly Rate</th>
+   	  <th>Working</th>
+    </tr>
+  </thead>
+    <tbody>
+{{#each users}}
+	<tr class="user" id="{{_id}}">
+		<td>
+			{{profile.name}}
+		</td>
+		<td>
+			<div title="{{profile.role}}" class="usericon {{profile.role}}"></div>
+		</td>
+		<td>
+		
+		</td>
+		<td>{{currentlyWorkingOn.name}}</td>
+			
+	</tr>
+{{/each}}
+ </tbody>
+</table>
+Icons from http://rrze-icon-set.berlios.de/
 </template>
