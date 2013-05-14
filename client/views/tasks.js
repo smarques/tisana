@@ -63,6 +63,7 @@ Template.tasks.helpers({
 	    } ,
 	    'click a.clearTaskSearch': function()
 	    {
+	    	
 	    	clearTaskSearch();
 	    } ,
 	    'click .tag': function()

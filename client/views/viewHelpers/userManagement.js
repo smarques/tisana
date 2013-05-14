@@ -34,7 +34,7 @@ requestReauthorization = function( err )
  		return Meteor.users.find();
  	}
  };
- clearTaskSearch = function()
+ clearUserSearch = function()
  {
  	Session.set('userSearch','');
  };
