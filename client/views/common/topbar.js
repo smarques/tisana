@@ -39,18 +39,20 @@
   Template.topbar.events({
 	    'click #sync' : function () {
 	      // template data, if any, is available in 'this'
-	    	stopRunningJobs();
+	    //	stopRunningJobs();
 	    	showLoader();
 	    	Meteor.call('resyncAsana',Session.get('currentWorkspace'), function(err, data){stopLoader();});
 	    },
 	    'click #workspaces li': function()
 	    {
+	    	//stopRunningJobs();
 	    	Session.set('currentProject', null );
 	    	Session.set('currentWorkspace', this.id);
 	    	Session.set('currentWorkspaceName', this.name);
 	    },
 	    'click #projects li': function()
 	    {
+	    	
 	    	if(this.id)
 	    	{
 	    	Session.set('currentProject', this.id);

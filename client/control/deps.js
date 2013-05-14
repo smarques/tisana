@@ -26,7 +26,7 @@ Deps.autorun(function() {
   
   Deps.autorun(function() {
 	  if (Session.get('currentWorkspace')) {
-		  stopRunningJobs();
+		  //stopRunningJobs();
 		  showLoader();
 		  Meteor.call('listWorkspaceProjects', Session.get('currentWorkspace'), function(err, data) {
 			  stopLoader();

@@ -26,26 +26,32 @@ clearTaskSearch = function()
 
 haveRunningJobs =function()
 {
-	var currentRunning = $('#tasks .stopwatch.btn-danger');
-	return(currentRunning.length);
+	var currentRunning = Session.get('runningTaskId');
+	return(currentRunning != null);
 };
 
 stopRunningJobs = function()
 {
-	var currentRunning = $('#tasks .stopwatch.btn-danger');
-	if(currentRunning.length)
+	var currentRunning = Session.get('runningTaskId');
+	if(currentRunning)
 	{
-		//get the is so we can update the record
-		var id = currentRunning.parents('tr.task').attr('id');
-		var elapsed = currentRunning.data('stopwatch').elapsed / 1000;
-		Tasks.update({_id:id}, {$inc:{workedSecs:elapsed}});
-		addSessionTimeOnTask(elapsed, id );
-		currentRunning.removeClass('btn-danger');
-		currentRunning.stopwatch().unbind('tick.stopwatch');
-		currentRunning.stopwatch().stopwatch('stop');
+		
+		var elapsed = Session.get('runningTaskSeconds');
+		var id = currentRunning;
+		
+		if(elapsed)
+		{
+			Tasks.update({_id:id}, {$inc:{workedSecs:elapsed}});
+			addSessionTimeOnTask(elapsed, id );
+		}
+		
+		
+
 		Session.set('runningTaskName',null);
 		Session.set('runningTaskId',null);
 		Session.set('runningTaskSeconds', 0 );
+		TaskTimer.stop();
+		TimerElapsedTime=0;
 		Meteor.users.update({_id:Meteor.userId()},
 				{
 				$set:{
@@ -72,9 +78,12 @@ addSessionTimeOnTask = function(secs, taskId)
 
 startTask = function(task)
 {
+	TaskTimer.play();
 	Session.set('runningTaskName',task.details.name);
 	Session.set('runningTaskId',task._id);
-	 Session.set('runningTaskSeconds', 0 );
+
+	// Session.set('runningTaskSeconds', 0 );
+	
 	Meteor.users.update({_id:Meteor.userId()},
 		{
 		$set:{

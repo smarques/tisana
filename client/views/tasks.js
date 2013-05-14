@@ -23,6 +23,10 @@ Template.tasks.helpers({
 	{
 		return (this.details.notes.length > 0);
 	},
+	"taskIsRunning": function()
+	{
+		return (this._id == Session.get('runningTaskId'));
+	},
 	"currentSearchString": function()
 	{
 		
@@ -38,27 +42,16 @@ Template.tasks.helpers({
 
 	    'click .stopwatch': function()
 	    {
+	    	
 	    	var button = $('#'+this._id+" .stopwatch");
-	    	var wasRunning = button.hasClass('btn-danger');
+	    	var wasRunning = (this._id == Session.get('runningTaskId') );
+	    	
 	    	stopRunningJobs();
 	    	if(!wasRunning)
 	    	{
-	    		//start
-		    	$('#'+this._id+" .stopwatch").addClass('btn-danger');
-		    	$('#'+this._id+" .stopwatch").stopwatch().bind('tick.stopwatch', function(e, elapsed){
-
-		    		setRunningTaskElapsedSeconds( elapsed / 1000); 
-		    		
-		    		/*console.log( elapsed );
-		    		if (elapsed % 30000 == 0) {
-		    	       Session.set('runningTaskSeconds', elapsed / 30000 );
-		    	       console.log( elapsed % 30000 );
-		    	    }*/
-		    	});
-	    		$('#'+this._id+" .stopwatch").stopwatch().stopwatch('start');
-	    		//console.log(this);
-	    		/*Session.set('runningTaskName',this.details.name);
-	    		Session.set('runningTaskId',this._id);*/
+	    		
+		    	
+	    		
 	    		startTask(this);
 	    	}
 	    	/*

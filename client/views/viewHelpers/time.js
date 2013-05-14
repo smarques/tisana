@@ -1,3 +1,9 @@
+TimerElapsedTime=0;
+TaskTimer = $.timer(function(){
+	TimerElapsedTime+=1;
+	setRunningTaskElapsedSeconds(TimerElapsedTime);
+	}, 1000, false);
+
 formatTime = function (seconds)
 {
 	 sec_numb    = parseInt(seconds, 10); // don't forget the second parm
@@ -28,3 +34,4 @@ getSessionTotalTime = function()
 	var current = Session.get('runningTaskSeconds');
 	return tot + current;
 }
+

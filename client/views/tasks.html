@@ -24,6 +24,7 @@
 				{{#each tags}}
 						<span class="label tag">{{name}}</span>
 				{{/each}}
+				
 			 	
 		</td>
 		<td> 
@@ -34,7 +35,11 @@
 		({{formatWorkedSessionSecs}})
 		</td>		
 		<td>
-		  <button id="cronWatchButton" class="stopwatch btn btn-primary" type="button">START</button>
+		{{#if taskIsRunning}}
+		  <button id="cronWatchButton_{{_id}}" class="stopwatch btn btn-primary btn-danger" type="button">STOP</button>
+		{{else}}
+		  <button id="cronWatchButton_{{_id}}" class="stopwatch btn btn-primary" type="button">START</button>
+		{{/if}}
 		</td>	
 	</tr>
 {{/each}}
