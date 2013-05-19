@@ -21,7 +21,7 @@ getSelectedTasks = function()
 };
 clearTaskSearch = function()
 {
-	console.log('clessar');
+	
 	Session.set('taskSearch','');
 };
 

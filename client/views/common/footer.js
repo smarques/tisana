@@ -20,3 +20,9 @@ Template.footer.helpers({
 	  }
 	  
 });
+Template.footer.events({
+	'click #cronWatchButtonCurrent':function()
+		{
+		stopRunningJobs();
+		}
+});

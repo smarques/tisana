@@ -84,3 +84,14 @@ div.usericon.user
 {
 	background-image: url(/img/users/user.png);
 }
+
+table#users div.promote,table#users div.demote{
+	padding-left:45px;
+	cursor:pointer;
+}
+#cronWatchButtonCurrent{
+	line-height:8px;
+	font-size:11px;
+	position:relative;bottom:1px;
+	margin:0 5px;
+}
