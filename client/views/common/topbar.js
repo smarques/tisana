@@ -11,6 +11,17 @@
 	  {
 		  return Session.get('currentWorkspace');
 	  },
+	  'showWorkspaceSyncButton':function()
+	   {
+		
+		 var haveWorkspace = !!( Session.get('currentWorkspace'));
+		 
+		  return  ( haveWorkspace && (Meteor.Router.page() == 'tasks'));
+	   },
+	   'showUserSyncButton':function()
+	   { 
+		   return  (  Meteor.Router.page() == 'users' );
+	   },
 	  'currentWorkspaceName':function()
 	  {
 		  return Session.get('currentWorkspaceName');
@@ -43,6 +54,13 @@
 	    	showLoader();
 	    	Meteor.call('resyncAsana',Session.get('currentWorkspace'), function(err, data){stopLoader();});
 	    },
+	    'click #userSync' : function () {
+		      // template data, if any, is available in 'this'
+		    //	stopRunningJobs();
+		    	showLoader();
+		    	Meteor.call('resyncAsanaUsers', function(err, data){stopLoader();});
+		    },
+	    
 	    'click #workspaces li': function()
 	    {
 	    	//stopRunningJobs();

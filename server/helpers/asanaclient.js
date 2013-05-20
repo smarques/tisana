@@ -56,6 +56,14 @@ AsanaClient.getTasks = function(workspace, proj, userid)
 	var res = this._query('GET', url);
 	return res.data;
 };
+AsanaClient.getUsers = function()
+{
+	var url = "/users";
+	
+	
+	var res = this._query('GET', url);
+	return res.data;
+};
 AsanaClient.getFullTask = function(taskid)
 {
 	var url = "/tasks/"+taskid;	
@@ -84,3 +92,13 @@ AsanaClient.syncTasks = function(mytasks)
 				Tasks.update(task.id, {$set: {details:fullTask}});
 		}
 };
+/* we keep for each admin a list of visible users so that we can show them a list of tasks for all their administered users 
+
+ */
+AsanaClient.resyncVisibleUsers = function( )
+{
+	var users = AsanaClient.getUsers();
+	var usersArray = _.map(users, function( value, index ){return value.id;})
+	Meteor.users.update(Meteor.userId(), {$set: {connectedUsers:usersArray}});
+	
+}

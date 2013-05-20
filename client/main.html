@@ -7,7 +7,7 @@
   		{{> topbar}}
 <div class="container {{currentPage}}">
 
-    {{renderPage}}
+   {{#isolate}} {{renderPage}} {{/isolate}}
   </div>
    {{> footer }}
 </body>

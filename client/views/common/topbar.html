@@ -31,8 +31,8 @@
 				</ul>
 				</li>
 			{{/if}}
+			
 			{{#if workspaceSelected}}
-				<input id="sync" type="button" class="btn" value="Sync {{currentWorkspaceName}} With Asana">
 				<li class="dropdown">
 				<a class="dropdown-toggle"
 			       data-toggle="dropdown"
@@ -64,6 +64,12 @@
 
 					</ul>
 			</li>
+			{{/if}}
+			{{#if showWorkspaceSyncButton}}
+				<input id="sync" type="button" class="btn" value="Sync {{currentWorkspaceName}} With Asana">
+			{{/if}}
+			{{#if showUserSyncButton}}
+				<input id="userSync" type="button" class="btn" value="Sync Users With Asana">
 			{{/if}}
 		
 		</ul>

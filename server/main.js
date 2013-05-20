@@ -20,6 +20,14 @@ Meteor.methods({
 			//console.log(wp);
 		  
 	  },
+	  resyncAsanaUsers:function(){
+			
+			var user = Meteor.user();
+			var wp=AsanaClient.resyncVisibleUsers();
+			
+			//console.log(wp);
+		  
+	  },
 	  resetAsana: function()
 	  {
 		  AsanaClient.reset();
@@ -40,7 +48,7 @@ Meteor.methods({
 			 // console.log('pippo');
 			  //return "pippo";
 			  return wp;
-	  },
+	  }
 	 
 	}); 
 
