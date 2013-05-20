@@ -5,19 +5,31 @@ updateTaskSearch = function()
 getSelectedTasks = function()
 {
 	var search = Session.get( 'taskSearch' );
-	
+	var res =[];
 	if(search)
 	{
 		var mongoDbArr = [];
 		mongoDbArr.push({'details.name': new RegExp(search,"i")});
 		mongoDbArr.push({'details.notes': new RegExp(search,"i")});
 		mongoDbArr.push({'details.tags.name': new RegExp(search,"i")});
-		return Tasks.find( { $or: mongoDbArr } );
+		res= Tasks.find( { $or: mongoDbArr } ).fetch();
 	}
 	else
 	{
-		return Tasks.find();
+		res = Tasks.find().fetch();
 	}
+	// no subfield in minimongo (YET)
+	return _.sortBy(res, 
+			function(val){
+		if(!val.details || !val.details.due_on){return 60*60*24*365*1000;}//if not set default to 1 yr
+		return 1*(Date.parse(val.details.due_on)- (new Date()));
+		}
+	);
+	return res;
+};
+getSelectedTasksCount=function()
+{
+	return getSelectedTasks().length;
 };
 clearTaskSearch = function()
 {

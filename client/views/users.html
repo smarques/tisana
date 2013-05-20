@@ -2,7 +2,7 @@
 <table id="users" class="content table table-striped table-bordered table-hover">
  <thead>
     <tr>
-      <th>User <div class="divclearable {{#if currentSearchString}}active{{/if}}"><input id="userSearch" class="clearable" value="{{currentSearchString}}"><a class="clearlink clearUserSearch" href="javascript:" title="Click to clear this textbox"></a></div></th>
+      <th><div class="divclearable {{#if currentSearchString}}active{{/if}}"><input id="userSearch" class="clearable" value="{{currentSearchString}}"><a class="clearlink clearUserSearch" href="javascript:" title="Click to clear this textbox"></a></div></th>
    	  <th>Role</th>
    	  <th>Hourly Rate</th>
    	  <th>Working</th>
@@ -11,17 +11,17 @@
     <tbody>
 {{#each users}}
 	<tr class="user" id="{{_id}}">
-		<td>
+		<td class="username">
 			{{profile.name}}
 		</td>
 		<td>
 			<div title="{{profile.role}}" class="usericon {{profile.role}}">
-			{{#if canPromote}}<div class="promote">Promote</div>{{/if}}
-			{{#if canDemote}}<div class="demote">Demote</div>{{/if}}
+			{{#if canPromote}}<div class="promote" title="promote">Promote</div>{{/if}}
+			{{#if canDemote}}<div class="demote" title="demote">Demote</div>{{/if}}
 			</div>
 		</td>
 		<td class="fee">
-		<span class="fee">&euro;{{formattedFee}}</span><input style="display:none" class="fee" type="text" value="{{fee}}"/>
+		<span class="editable fee">&euro;{{formattedFee}}</span><input style="display:none" class="fee" type="text" value="{{fee}}"/>
 		</td>
 		<td>{{#if currentlyWorkingOn.name}}{{currentlyWorkingOn.name}}{{/if}}</td>
 			

@@ -8,7 +8,7 @@ Template.footer.helpers({
 		  return '';
 	  },
 	  'selectedTasks':function(){
-		  return getSelectedTasks().count();
+		return  getSelectedTasksCount();
 	  },
 	  'runningTaskShortName':function(){
 		  if( Session.get('runningTaskName'))
