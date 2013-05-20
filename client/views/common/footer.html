@@ -4,12 +4,13 @@
 <div id="selectedTasks"><a href="/">{{selectedTasks}} selected tasks</a></div>
 	{{/if}}
 <div id="totalSessionTime">
-{{#if runningTaskShortName}}
-	Working on: {{runningTaskShortName}}...
-	  <button id="cronWatchButtonCurrent" class="stopwatch btn btn-danger" type="button">STOP</button>
-	{{/if}}
-	{{#if totalSessionTime}}
+{{#if totalSessionTime}}
 	Total Work Time in this session: <span class="time">{{totalSessionTime}}</span>
 	{{/if}}
+{{#if runningTaskShortName}}
+	Working on: <span>{{runningTaskShortName}}...</span>
+	  <button id="cronWatchButtonCurrent" class="stopwatch btn btn-danger" type="button">STOP</button>
+	{{/if}}
+	
 </div>
 </template>

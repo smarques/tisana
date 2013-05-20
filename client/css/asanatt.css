@@ -95,3 +95,10 @@ table#users div.promote,table#users div.demote{
 	position:relative;bottom:1px;
 	margin:0 5px;
 }
+input.fee,span.fee{
+	width:60px;
+	text-align:right;
+	display:block;
+	
+}
+td.fee{ width:80px;text-align:right}

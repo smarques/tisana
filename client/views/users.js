@@ -12,6 +12,11 @@ Template.users.helpers({
 	{
 		
 		return (this._id!= Meteor.userId() && this.profile.role != 'user' && isAdmin(Meteor.user()));
+	},
+	'formattedFee':function()
+	{
+		var fee = (this.fee || '0');
+		return accounting.formatMoney(fee, "", 2, ".", ",");
 	}
 });
 Template.users.events({
@@ -39,5 +44,27 @@ Template.users.events({
 	    		{
 	    			setUserFee(this._id, fee);
 	    		}
+	    	$('#'+this._id+' input.fee').hide();
+    		$('#'+this._id+' span.fee').show();
+	    },
+	    'click span.fee':function()
+	    	{
+	    		$('#'+this._id+' span.fee').hide();
+	    		$('#'+this._id+' input.fee').show().focus().select();
+	    	},
+	    'keypress input.fee': function(ev)
+	    {
+	    	var w = ev.which;
+	    	if(w==13)//enter
+	    	{
+	    		var fee = parseFloat($('#'+this._id+' input.fee').val());
+		    	if(fee)
+		    		{
+		    			setUserFee(this._id, fee);
+		    		}
+		    	$('#'+this._id+' input.fee').hide();
+	    		$('#'+this._id+' span.fee').show();
+	    	}
 	    }
+	    
 });
