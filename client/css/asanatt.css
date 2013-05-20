@@ -34,6 +34,12 @@ a.clearlink:hover {
 	background: url("/img/close-button.png") no-repeat scroll -12px 0 transparent;
 	background-position: center center;
 }
+
+
+.editable:hover{
+	background-color:yellow;
+}
+
 /*******************/
 #login-buttons .login-display-name{
 	line-height: 40px;
@@ -69,8 +75,14 @@ a.clearlink:hover {
 	
 	float:right;
 }
+#cronWatchButtonCurrent{
+	line-height:8px;
+	font-size:11px;
+	position:relative;bottom:1px;
+	margin:0 5px;
+}
 
-/****users ****/
+/**** USERS ****/
 div.usericon{
 	background-repeat: no-repeat;
 	width:43px;
@@ -83,4 +95,27 @@ div.usericon.admin
 div.usericon.user
 {
 	background-image: url(/img/users/user.png);
+}
+
+table#users div.promote,table#users div.demote{
+	padding-left:45px;
+	cursor:pointer;
+}
+
+input.fee,span.fee{
+	width:60px;
+	text-align:right;
+	display:block;
+	
+}
+td.fee{ width:80px;text-align:right}
+td.username{
+	width:250px;
+}
+
+
+/************  TASKS ************/
+
+span.label.tag{
+		cursor:pointer;
 }

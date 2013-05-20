@@ -36,6 +36,14 @@ Template.tasks.helpers({
 		var res = this.details.tags;
 		
 		return res;
+	},
+	'dueDate':function(){
+		if(!this.details.due_on) return '';
+		return this.details.due_on;
+	},
+	'overDue':function(){
+		
+		return( Date.parse(this.details.due_on) < (new Date()));
 	}
   });
   Template.tasks.events({

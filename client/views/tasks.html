@@ -1,11 +1,10 @@
-
-
 <template name="tasks">
 {{#if hasTasks}}
 <table id="tasks" class="content table table-striped table-bordered table-hover">
  <thead>
     <tr>
       <th>Task <div class="divclearable {{#if currentSearchString}}active{{/if}}"><input id="taskSearch" class="clearable" value="{{currentSearchString}}"><a class="clearlink clearTaskSearch" href="javascript:" title="Click to clear this textbox"></a></div></th>
+   	  <th>Due Date</th>
    	  <th>Estimated Time</th>
    	  <th>Worked Time</th>
    	  <th></th>
@@ -16,7 +15,11 @@
 	<tr class="task" id="{{_id}}">
 		<td>
 				{{#if taskHasDetails}}
-				<p><a href="javascript:" class="taskname" data-toggle="collapse" data-target="#taskdetails_{{_id}}">{{details.name}}</a></p>
+				<p>
+				<a href="javascript:" class="taskname" data-toggle="collapse" data-target="#taskdetails_{{_id}}">{{details.name}}
+				</a>
+			
+				</p>
 				<p class="taskdetails collapse" id="taskdetails_{{_id}}" >{{details.notes}}</p>
 				{{else}}
 				<p><span class="taskname" >{{details.name}}</span></p>
@@ -27,6 +30,9 @@
 				
 			 	
 		</td>
+		<td class="dueDate"> 
+		<span class="label date {{#if overDue}}overdue label-important{{/if}}">{{dueDate}}</span>
+		</td>	
 		<td> 
 		{{estimatedSecs}}
 		</td>	
