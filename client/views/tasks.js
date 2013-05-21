@@ -16,6 +16,12 @@ Template.tasks.helpers({
 		return formatTime(this.workedSecs);
 		
 	},
+	"formatEstimatedSecs":function(){
+		if(this.estimatedSecs)
+		return formatTime(this.estimatedSecs);
+		return '-';
+		
+	},
 	"formatWorkedSessionSecs":function(){
 		return formatTime(getSessionTimeOnTask(this._id));
 	},
@@ -77,6 +83,36 @@ Template.tasks.helpers({
 	    'click .tag': function()
 	    {
 	    	Session.set('taskSearch',this.name);
+	    },
+	    'blur input.estimatedSecs':function()
+	    {	    	
+	    	
+	    	var fee = parseFloat($('#task_'+this._id+' input.estimatedSecs').val());
+	    	if(fee)
+	    		{
+	    			//setUserFee(this._id, fee);
+	    		}
+	    	$('#task_'+this._id+' input.estimatedSecs').hide();
+    		$('#task_'+this._id+' span.estimatedSecs').show();
+	    },
+	    'click span.estimatedSecs':function()
+	    	{
+	    		$('#task_'+this._id+' span.estimatedSecs').hide();
+	    		$('#task_'+this._id+' input.estimatedSecs').show().focus().select();
+	    	},
+	    'keypress input.estimatedSecs': function(ev)
+	    {
+	    	var w = ev.which;
+	    	if(w==13)//enter
+	    	{
+	    		var fee = parseFloat($('#task_'+this._id+' input.estimatedSecs').val());
+		    	if(fee)
+		    		{
+		    			//setUserFee(this._id, fee);
+		    		}
+		    	$('#task_'+this._id+' input.estimatedSecs').hide();
+	    		$('#task_'+this._id+' span.estimatedSecs').show();
+	    	}
 	    }
   
   } );

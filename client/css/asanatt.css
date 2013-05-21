@@ -35,9 +35,13 @@ a.clearlink:hover {
 	background-position: center center;
 }
 
-
+.editable{
+	
+	display:block;
+}
 .editable:hover{
 	background-color:yellow;
+	
 }
 
 /*******************/

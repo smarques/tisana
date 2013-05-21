@@ -39,31 +39,31 @@ Template.users.events({
 	    'blur input.fee':function()
 	    {	    	
 	    	
-	    	var fee = parseFloat($('#'+this._id+' input.fee').val());
+	    	var fee = parseFloat($('#user_'+this._id+' input.fee').val());
 	    	if(fee)
 	    		{
 	    			setUserFee(this._id, fee);
 	    		}
-	    	$('#'+this._id+' input.fee').hide();
-    		$('#'+this._id+' span.fee').show();
+	    	$('#user_'+this._id+' input.fee').hide();
+    		$('#user_'+this._id+' span.fee').show();
 	    },
 	    'click span.fee':function()
 	    	{
-	    		$('#'+this._id+' span.fee').hide();
-	    		$('#'+this._id+' input.fee').show().focus().select();
+	    		$('#user_'+this._id+' span.fee').hide();
+	    		$('#user_'+this._id+' input.fee').show().focus().select();
 	    	},
 	    'keypress input.fee': function(ev)
 	    {
 	    	var w = ev.which;
 	    	if(w==13)//enter
 	    	{
-	    		var fee = parseFloat($('#'+this._id+' input.fee').val());
+	    		var fee = parseFloat($('#user_'+this._id+' input.fee').val());
 		    	if(fee)
 		    		{
 		    			setUserFee(this._id, fee);
 		    		}
-		    	$('#'+this._id+' input.fee').hide();
-	    		$('#'+this._id+' span.fee').show();
+		    	$('#user_'+this._id+' input.fee').hide();
+	    		$('#user_'+this._id+' span.fee').show();
 	    	}
 	    }
 	    
