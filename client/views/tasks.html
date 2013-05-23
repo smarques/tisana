@@ -33,8 +33,12 @@
 		<td class="dueDate"> 
 		<span class="label date {{#if overDue}}overdue label-important{{/if}}">{{dueDate}}</span>
 		</td>	
-		<td> 
-		<span class="editable estimatedSecs">{{formatEstimatedSecs}}</span><input style="display:none" class="estimatedSecs" type="text" value="{{estimatedSecs}}"/>
+		<td class="estimatedTime"> 
+		<span class="editable estimatedSecs">{{formatEstimatedSecs}}</span>
+		<span class="estimatedTimeInput" style="display:none" >
+			<input class="estimatedHours" type="text" value="{{estimatedHours}}"/> H,
+			<input  class="estimatedMins" type="text" value="{{estimatedMins}}"/>m
+		</span>
 		</td>	
 		<td>
 		{{formatWorkedSecs}}

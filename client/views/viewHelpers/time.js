@@ -1,7 +1,7 @@
 TimerElapsedTime=0;
 TaskTimer = $.timer(function(){
 	TimerElapsedTime+=1;
-	setRunningTaskElapsedSeconds(TimerElapsedTime);
+	jobManagement.setRunningTaskElapsedSeconds(TimerElapsedTime);
 	}, 1000, false);
 
 formatTime = function (seconds)

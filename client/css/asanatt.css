@@ -123,3 +123,9 @@ td.username{
 span.label.tag{
 		cursor:pointer;
 }
+td.estimatedTime{
+	width:200px;
+}
+span.estimatedTimeInput input{
+	width:60px;
+}

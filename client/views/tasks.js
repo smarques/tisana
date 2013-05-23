@@ -1,12 +1,32 @@
 
 Template.tasks.rendered = function()
 {
-	//$('input.clearable').clearable();
-}
+	
+};
+Template.tasks.getEstimatedTime=function(taskid)
+{
+	var hours = parseFloat($('#task_'+taskid+' span.estimatedTimeInput input.estimatedHours').val());;
+	var mins = parseFloat($('#task_'+taskid+' span.estimatedTimeInput input.estimatedMins').val());;
+	
+	$('#task_'+taskid+' span.estimatedTimeInput').hide();
+	$('#task_'+taskid+' span.estimatedSecs').show();
+	var secs = Math.floor(hours * 60 * 60 + mins * 60);
+	jobManagement.setTaskEstimatedTime(taskid, secs);
+};
+Template.tasks.updateTaskSearch = function()
+{
+	Session.set('taskSearch',$('#taskSearch').val());
+}; 
+
+Template.tasks.clearTaskSearch = function()
+{
+	
+	Session.set('taskSearch','');
+};
 Template.tasks.helpers({
 	"tasks":function()
 	{
-		return getSelectedTasks();
+		return jobManagement.getSelectedTasks();
 	},
 	"hasTasks":function()
 	{
@@ -60,58 +80,58 @@ Template.tasks.helpers({
 	    	var button = $('#'+this._id+" .stopwatch");
 	    	var wasRunning = (this._id == Session.get('runningTaskId') );
 	    	
-	    	stopRunningJobs();
+	    	jobManagement.stopRunningJobs();
 	    	if(!wasRunning)
 	    	{
 	    		
 		    	
 	    		
-	    		startTask(this);
+	    		jobManagement.startTask(this);
 	    	}
 	    	/*
 	    	$('#'+this._id+" .stopwatch").stopwatch().stopwatch('start')*/
 	    },
 	    'keyup #taskSearch': function()
 	    {
-	    	updateTaskSearch();	
+	    	Template.tasks.updateTaskSearch();	
 	    } ,
 	    'click a.clearTaskSearch': function()
 	    {
 	    	
-	    	clearTaskSearch();
+	    	Template.tasks.clearTaskSearch();
 	    } ,
 	    'click .tag': function()
 	    {
 	    	Session.set('taskSearch',this.name);
 	    },
-	    'blur input.estimatedSecs':function()
-	    {	    	
+	    'blur span.estimatedTimeInput input':function()
+	    {	var task=this;
+	    	setTimeout(function(){
+	    		   //same row
+	    		
+	    			var rowInputs = $('#task_'+task._id+' span.estimatedTimeInput input:focus');
+	    			if(!rowInputs.length)
+	    				{
+	    				Template.tasks.getEstimatedTime(task._id);
+	    				}
+	    			}, 500);
+
 	    	
-	    	var fee = parseFloat($('#task_'+this._id+' input.estimatedSecs').val());
-	    	if(fee)
-	    		{
-	    			//setUserFee(this._id, fee);
-	    		}
-	    	$('#task_'+this._id+' input.estimatedSecs').hide();
-    		$('#task_'+this._id+' span.estimatedSecs').show();
 	    },
 	    'click span.estimatedSecs':function()
 	    	{
 	    		$('#task_'+this._id+' span.estimatedSecs').hide();
-	    		$('#task_'+this._id+' input.estimatedSecs').show().focus().select();
+	    		$('#task_'+this._id+' span.estimatedTimeInput').show();
+	    		$('#task_'+this._id+' span.estimatedTimeInput input:first').show().focus().select();
+	    		
 	    	},
-	    'keypress input.estimatedSecs': function(ev)
+	    'keypress span.estimatedTimeInput input': function(ev)
 	    {
 	    	var w = ev.which;
 	    	if(w==13)//enter
 	    	{
-	    		var fee = parseFloat($('#task_'+this._id+' input.estimatedSecs').val());
-		    	if(fee)
-		    		{
-		    			//setUserFee(this._id, fee);
-		    		}
-		    	$('#task_'+this._id+' input.estimatedSecs').hide();
-	    		$('#task_'+this._id+' span.estimatedSecs').show();
+	    		
+	    		Template.tasks.getEstimatedTime(this._id);
 	    	}
 	    }
   

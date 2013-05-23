@@ -8,7 +8,7 @@ Template.footer.helpers({
 		  return '';
 	  },
 	  'selectedTasks':function(){
-		return  getSelectedTasksCount();
+		return  jobManagement.getSelectedTasksCount();
 	  },
 	  'runningTaskShortName':function(){
 		  if( Session.get('runningTaskName'))
@@ -23,6 +23,6 @@ Template.footer.helpers({
 Template.footer.events({
 	'click #cronWatchButtonCurrent':function()
 		{
-		stopRunningJobs();
+		 jobManagement.stopRunningJobs();
 		}
 });
