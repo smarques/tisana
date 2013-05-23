@@ -1,7 +1,15 @@
+Template.users.updateUserSearch = function()
+ {
+ 	Session.set('userSearch',$('#userSearch').val());
+ }; 
+ Template.users.clearUserSearch = function()
+ {
+ 	Session.set('userSearch','');
+ };
 Template.users.helpers({
 	"users":function()
 	{
-		return getSelectedUsers();
+		return userManagement.getSelectedUsers();
 	},
 	"canPromote":function()
 	{
@@ -22,11 +30,11 @@ Template.users.helpers({
 Template.users.events({
 	 'keyup #userSearch': function()
 	    {
-	    	updateUserSearch();	
+		 	Template.users.updateUserSearch();	
 	    } ,
 	    'click a.clearUserSearch': function()
 	    {
-	    	clearUserSearch();
+	    	Template.users.clearUserSearch();
 	    },
 	    'click div.demote': function()
 	    {

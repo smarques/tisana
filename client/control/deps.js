@@ -10,7 +10,7 @@ Deps.autorun(function() {
 			  if (err)
 				  {
 				 
-			    requestReauthorization(err);
+				  userManagement.requestReauthorization(err);
 				  }
 
 			  Session.set('workspaces', data);
