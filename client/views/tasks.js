@@ -5,8 +5,8 @@ Template.tasks.rendered = function()
 };
 Template.tasks.getEstimatedTime=function(taskid)
 {
-	var hours = parseFloat($('#task_'+taskid+' span.estimatedTimeInput input.estimatedHours').val());;
-	var mins = parseFloat($('#task_'+taskid+' span.estimatedTimeInput input.estimatedMins').val());;
+	var hours = parseFloat($('#task_'+taskid+' span.estimatedTimeInput input.estimatedHours').val()) || 0;
+	var mins = parseFloat($('#task_'+taskid+' span.estimatedTimeInput input.estimatedMins').val()) || 0;
 	
 	$('#task_'+taskid+' span.estimatedTimeInput').hide();
 	$('#task_'+taskid+' span.estimatedSecs').show();
@@ -41,6 +41,16 @@ Template.tasks.helpers({
 		return formatTime(this.estimatedSecs);
 		return '-';
 		
+	},
+	"estimatedMins":function()
+	{
+		if(!this.estimatedSecs) return;
+		return Math.floor((this.estimatedSecs % (3600))/60);
+	},
+	"estimatedHours":function()
+	{
+		if(!this.estimatedSecs) return;
+		return Math.floor(this.estimatedSecs / (3600));
 	},
 	"formatWorkedSessionSecs":function(){
 		return formatTime(getSessionTimeOnTask(this._id));
@@ -82,10 +92,7 @@ Template.tasks.helpers({
 	    	
 	    	jobManagement.stopRunningJobs();
 	    	if(!wasRunning)
-	    	{
-	    		
-		    	
-	    		
+	    	{	    		
 	    		jobManagement.startTask(this);
 	    	}
 	    	/*
