@@ -12,7 +12,7 @@
   </thead>
     <tbody>
 {{#each tasks}}
-	<tr class="task" id="task_{{_id}}">
+	<tr id="task_{{_id}}" class="task {{#if overRunning}}overRunning{{/if}} {{#if overDue}}overDue{{/if}}">
 		<td>
 				{{#if taskHasDetails}}
 				<p>
@@ -31,7 +31,7 @@
 			 	
 		</td>
 		<td class="dueDate"> 
-		<span class="label date {{#if overDue}}overdue label-important{{/if}}">{{dueDate}}</span>
+		<span class="label date">{{dueDate}}</span>
 		</td>	
 		<td class="estimatedTime"> 
 		<span class="editable estimatedSecs">{{formatEstimatedSecs}}</span>
@@ -40,7 +40,7 @@
 			<input  class="estimatedMins" type="text" value="{{estimatedMins}}"/>m
 		</span>
 		</td>	
-		<td>
+		<td class="workedTime">
 		{{formatWorkedSecs}}
 		({{formatWorkedSessionSecs}})
 		</td>		

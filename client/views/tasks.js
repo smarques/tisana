@@ -80,6 +80,10 @@ Template.tasks.helpers({
 	'overDue':function(){
 		
 		return( Date.parse(this.details.due_on) < (new Date()));
+	},
+	'overRunning':function(){
+		
+		return( (this.estimatedSecs > 0) && (this.workedSecs > this.estimatedSecs));
 	}
   });
   Template.tasks.events({

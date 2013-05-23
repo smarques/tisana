@@ -119,7 +119,13 @@ td.username{
 
 
 /************  TASKS ************/
-
+tr.task.overDue span.date{
+	background-color: #B94A48;
+}
+tr.task.overRunning td.workedTime{
+	color: #B94A48;
+	font-weight: bold;
+}
 span.label.tag{
 		cursor:pointer;
 }
