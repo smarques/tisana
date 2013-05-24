@@ -6,6 +6,14 @@ Template.users.updateUserSearch = function()
  {
  	Session.set('userSearch','');
  };
+ Template.users.updateUserFee = function(userId)
+ {
+	 var fee = parseFloat($('#user_'+userId+' input.fee').val());
+ 	if(fee)
+ 		{
+ 			usersLib.setUserFee(userId, fee);
+ 		}
+ }
 Template.users.helpers({
 	"users":function()
 	{
@@ -14,12 +22,12 @@ Template.users.helpers({
 	"canPromote":function()
 	{
 		//console.log(this);
-		return (this.profile.role != 'admin' && isAdmin(Meteor.user()));
+		return (this.profile.role != 'admin' && usersLib.isAdmin(Meteor.user()));
 	},
 	"canDemote":function()
 	{
 		
-		return (this._id!= Meteor.userId() && this.profile.role != 'user' && isAdmin(Meteor.user()));
+		return (this._id!= Meteor.userId() && this.profile.role != 'user' && usersLib.isAdmin(Meteor.user()));
 	},
 	'formattedFee':function()
 	{
@@ -38,20 +46,16 @@ Template.users.events({
 	    },
 	    'click div.demote': function()
 	    {
-	    	demoteUser(this._id);
+	    	usersLib.demoteUser(this._id);
 	    },
 	    'click div.promote': function()
 	    {
-	    	promoteUser(this._id);
+	    	usersLib.promoteUser(this._id);
 	    },
 	    'blur input.fee':function()
 	    {	    	
+	    	Template.users.updateUserFee( this._id );
 	    	
-	    	var fee = parseFloat($('#user_'+this._id+' input.fee').val());
-	    	if(fee)
-	    		{
-	    			setUserFee(this._id, fee);
-	    		}
 	    	$('#user_'+this._id+' input.fee').hide();
     		$('#user_'+this._id+' span.fee').show();
 	    },
@@ -65,11 +69,8 @@ Template.users.events({
 	    	var w = ev.which;
 	    	if(w==13)//enter
 	    	{
-	    		var fee = parseFloat($('#user_'+this._id+' input.fee').val());
-		    	if(fee)
-		    		{
-		    			setUserFee(this._id, fee);
-		    		}
+	    		Template.users.updateUserFee( this._id );
+	    		
 		    	$('#user_'+this._id+' input.fee').hide();
 	    		$('#user_'+this._id+' span.fee').show();
 	    	}

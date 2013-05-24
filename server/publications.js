@@ -9,7 +9,7 @@ Meteor.publish('userProjectTasks', function (projectId) {
 		
 		  {"details.projects.id":projectId},
 		  {"details.completed":false},
-		  {"asanaUser":getAsanaId(this.userId)}
+		  {"asanaUser":usersLib.getAsanaId(this.userId)}
 		  ]
 		  });
 	});
@@ -19,12 +19,12 @@ Meteor.publish('userWorkspaceTasks', function (wsId) {
 		
 		  {"details.workspace.id":wsId},
 		  {"details.completed":false},
-		  {"asanaUser":getAsanaId(this.userId)}
+		  {"asanaUser":usersLib.getAsanaId(this.userId)}
 		  ]
 		  });
 	});
 Meteor.publish('allUsers', function() {
-	  if (this.userId && isAdminById(this.userId)) {
+	  if (this.userId && usersLib.isAdminById(this.userId)) {
 	    // if user is admin, publish all fields
 	    return Meteor.users.find({},{'currentlyWorkingOn':1});
 	  }else{
@@ -38,7 +38,7 @@ Meteor.startup(function(){
 	        return false;
 	      }
 	    , update: function(userId, doc, fields, modifier){
-	        return isAdminById(userId) || (doc.asanaUser && doc.asanaUser == getAsanaId(userId));
+	        return usersLib.isAdminById(userId) || (doc.asanaUser && doc.asanaUser == usersLib.getAsanaId(userId));
 	      }
 	    , remove: function(userId, doc){
 	       return false;
@@ -49,7 +49,7 @@ Meteor.startup(function(){
 	        return false;
 	      }
 	    , update: function(userId, doc, fields, modifier){
-	        return isAdminById(userId) || (doc._id && doc._id == userId);
+	        return usersLib.isAdminById(userId) || (doc._id && doc._id == userId);
 	      }
 	    , remove: function(userId, doc){
 	       return false;

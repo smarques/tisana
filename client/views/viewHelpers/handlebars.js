@@ -1,6 +1,6 @@
 Handlebars.registerHelper('isAdmin', function(showError) {
 
-  if(isAdmin(Meteor.user())){
+  if(usersLib.isAdmin(Meteor.user())){
     return true;
   }else{
     if((typeof showError === "string") && (showError === "true"))

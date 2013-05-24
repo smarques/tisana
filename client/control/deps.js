@@ -53,7 +53,7 @@ Deps.autorun(function () {
 
 
 Deps.autorun(function() {
-	  if (Meteor.userId() && isAdmin(Meteor.user())) {
+	  if (Meteor.userId() && usersLib.isAdmin(Meteor.user())) {
 		  Meteor.subscribe('allUsers');
 	  }
 	});
