@@ -1,3 +1,15 @@
+Template.users.rendered = function () {
+	var users = userManagement.getSelectedUsers().fetch();
+	for (var i = 0; i < users.length; i++) {
+		var user = users[i];
+		var selector = "tr#user_"+user._id+" td.currentProgress";
+		console.log((selector));
+	    $(selector).html(selector);
+	    //Do something
+	}
+    //this.node = this.find('#video-map');
+  }
+
 Template.users.updateUserSearch = function()
  {
  	Session.set('userSearch',$('#userSearch').val());
