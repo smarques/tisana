@@ -29,11 +29,13 @@ Tasks are saved locally in mongo but can be resynced any time
 
 - Detailed Work Statistics and Work Load Visaulization using D3
 
-- Manage Estimated Time on Tasks vs Actual Worked Time
+- [x] Manage Estimated Time on Tasks vs Actual Worked Time
 
 - Add alerts when overworking a task.
 
-- Add Hourly Cost on Users and budget functions
+- [x] Add Hourly Cost on Users 
+
+- budget functions
 
 
 ## Getting started

@@ -131,10 +131,12 @@ Template.tasks.helpers({
 	    },
 	    'click span.estimatedSecs':function()
 	    	{
+	    		if(usersLib.isAdmin(Meteor.user()))
+	    		{
 	    		$('#task_'+this._id+' span.estimatedSecs').hide();
 	    		$('#task_'+this._id+' span.estimatedTimeInput').show();
 	    		$('#task_'+this._id+' span.estimatedTimeInput input:first').show().focus().select();
-	    		
+	    		}
 	    	},
 	    'keypress span.estimatedTimeInput input': function(ev)
 	    {

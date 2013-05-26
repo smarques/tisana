@@ -34,11 +34,13 @@
 		<span class="label date">{{dueDate}}</span>
 		</td>	
 		<td class="estimatedTime"> 
-		<span class="editable estimatedSecs">{{formatEstimatedSecs}}</span>
+		<span class="{{#if isAdmin}}editable{{/if}} estimatedSecs">{{formatEstimatedSecs}}</span>
+		{{#if isAdmin}}
 		<span class="estimatedTimeInput" style="display:none" >
 			<input class="estimatedHours" type="text" value="{{estimatedHours}}"/> H,
 			<input  class="estimatedMins" type="text" value="{{estimatedMins}}"/>m
 		</span>
+		{{/if}}
 		</td>	
 		<td class="workedTime">
 		{{formatWorkedSecs}}
