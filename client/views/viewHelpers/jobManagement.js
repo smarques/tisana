@@ -85,7 +85,7 @@ jobManagement = {
 			TaskTimer.play();
 			Session.set('runningTaskName',task.details.name);
 			Session.set('runningTaskId',task._id);
-
+			var estimated = (task.estimatedSecs || 0);
 			// Session.set('runningTaskSeconds', 0 );
 			
 			Meteor.users.update({_id:Meteor.userId()},
@@ -94,7 +94,8 @@ jobManagement = {
 					'currentlyWorkingOn':
 						{
 							'name':task.details.name,
-							'taskId':task._id
+							'taskId':task._id,
+							'estimatedSecs':estimated
 						}
 					}
 				});

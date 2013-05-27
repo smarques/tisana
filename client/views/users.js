@@ -2,9 +2,12 @@ Template.users.rendered = function () {
 	var users = userManagement.getSelectedUsers().fetch();
 	for (var i = 0; i < users.length; i++) {
 		var user = users[i];
+		if(user.currentlyWorkingOn.name)
+		{//http://bl.ocks.org/mbostock/4061961
 		var selector = "tr#user_"+user._id+" td.currentProgress";
-		console.log((selector));
-	    $(selector).html(selector);
+		console.log(user.currentlyWorkingOn);
+	    $(selector).html(user.currentlyWorkingOn.name);
+		}
 	    //Do something
 	}
     //this.node = this.find('#video-map');
