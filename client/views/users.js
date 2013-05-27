@@ -4,14 +4,27 @@ Template.users.rendered = function () {
 		var user = users[i];
 		if(user.currentlyWorkingOn.name)
 		{//http://bl.ocks.org/mbostock/4061961
-		var selector = "tr#user_"+user._id+" td.currentProgress";
-		console.log(user.currentlyWorkingOn);
-	    $(selector).html(user.currentlyWorkingOn.name);
+		var selector = "tr#user_"+user._id+" td.currentProgress svg";
+
+	var margin = {top: 5, right: 40, bottom: 5, left: 10},
+		    width = $('td.currentProgress').width() - margin.left - margin.right,
+		    height = 50 - margin.top - margin.bottom;
+			var chart = d3.bullet() .width(width)
+		    .height(height);
+
+			d3.select(selector).data([{"title":"Revenue","subtitle":"US$, in thousands","ranges":[150,225,300],"measures":[220,270],"markers":[250]}]) .call(chart);
+/*
+		var chart = d3.bullet()
+		    .width(width)
+		    .height(height);*/
+		//d3.select('.user1').data([{"title":"Revenue","subtitle":"US$, in thousands","ranges":[150,225,300],"measures":[220,270],"markers":[250]}]) .call(chart);
+		 // console.log( $(selector) );
+	    //$(selector).html(user.currentlyWorkingOn.name);
 		}
 	    //Do something
 	}
     //this.node = this.find('#video-map');
-  }
+  };
 
 Template.users.updateUserSearch = function()
  {
@@ -23,12 +36,13 @@ Template.users.updateUserSearch = function()
  };
  Template.users.updateUserFee = function(userId)
  {
-	 var fee = parseFloat($('#user_'+userId+' input.fee').val());
+	 
+	var fee = parseFloat($('#user_'+userId+' input.fee').val());
  	if(fee)
  		{
  			usersLib.setUserFee(userId, fee);
  		}
- }
+ };
 Template.users.helpers({
 	"users":function()
 	{

@@ -100,7 +100,9 @@ div.usericon.user
 {
 	background-image: url(/img/users/user.png);
 }
-
+table#users tr {
+	height:50px;
+}
 table#users div.promote,table#users div.demote{
 	padding-left:45px;
 	cursor:pointer;
@@ -116,7 +118,11 @@ td.fee{ width:80px;text-align:right}
 td.username{
 	width:250px;
 }
-
+td.currentProgress {
+	width:400px;
+	height:80;
+	
+}
 
 /************  TASKS ************/
 tr.task.overDue span.date{
@@ -135,3 +141,18 @@ td.estimatedTime{
 span.estimatedTimeInput input{
 	width:60px;
 }
+
+
+/************** GRAPHS  ****************/
+/****** USER PROGRESS  ***********/
+
+.currentProgress { font: 10px sans-serif; }
+.currentProgress .marker { stroke: #000; stroke-width: 2px; }
+.currentProgress .tick line { stroke: #666; stroke-width: .5px; }
+.currentProgress .range.s0 { fill: #eee; }
+.currentProgress .range.s1 { fill: #ddd; }
+.currentProgress .range.s2 { fill: #ccc; }
+.currentProgress .measure.s0 { fill: lightsteelblue; }
+.currentProgress .measure.s1 { fill: steelblue; }
+.currentProgress .title { font-size: 14px; font-weight: bold; }
+.currentProgress .subtitle { fill: #999; }
