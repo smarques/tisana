@@ -152,7 +152,8 @@ span.estimatedTimeInput input{
 .currentProgress .range.s0 { fill: #eee; }
 .currentProgress .range.s1 { fill: #ddd; }
 .currentProgress .range.s2 { fill: #ccc; }
-.currentProgress .measure.s0 { fill: lightsteelblue; }
+.currentProgress .measure.s0 { fill: #D97534; }
 .currentProgress .measure.s1 { fill: steelblue; }
 .currentProgress .title { font-size: 14px; font-weight: bold; }
 .currentProgress .subtitle { fill: #999; }
+.currentProgress svg {height:40px;}

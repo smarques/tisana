@@ -2,14 +2,15 @@
   "meteor": {
     "git": "https://github.com/meteor/meteor.git",
     "branch": "master",
-    "commit": "bfe4b72ebec4367eaddcdf0887fcf5e649d9dcb8"
+    "commit": "5d736d4bf0448c7db1f9b47124dfafc34a9631bb"
   },
   "dependencies": {
     "basePackages": {
       "accounts-asana": {},
       "accounts-ui-bootstrap-dropdown": {},
       "sugar": {},
-      "router": {}
+      "router": {},
+      "observatory": {}
     },
     "packages": {
       "accounts-asana": {
@@ -32,10 +33,20 @@
         "tag": "v0.5.1",
         "commit": "32e377c7703bb119acccc859fc7296882903cbe7"
       },
+      "observatory": {
+        "git": "https://github.com/jhoxray/observatory.git",
+        "tag": "v0.2.1",
+        "commit": "3a3302c086fc9e9c59adf9dfc01e88d746f6c501"
+      },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",
         "tag": "v1.3.5",
         "commit": "b99ed8380aefd10b2afc8f18d9eed4dd0d8ea9cb"
+      },
+      "observatory-apollo": {
+        "git": "https://github.com/superstringsoftware/observatory-apollo.git",
+        "branch": "master",
+        "commit": "b754bb265ef3df07a406f2b342a169e951e6caee"
       }
     }
   }

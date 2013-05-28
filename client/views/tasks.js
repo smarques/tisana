@@ -99,8 +99,7 @@ Template.tasks.helpers({
 	    	{	    		
 	    		jobManagement.startTask(this);
 	    	}
-	    	/*
-	    	$('#'+this._id+" .stopwatch").stopwatch().stopwatch('start')*/
+	    	
 	    },
 	    'keyup #taskSearch': function()
 	    {

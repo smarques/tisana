@@ -2,28 +2,26 @@ Template.users.rendered = function () {
 	var users = userManagement.getSelectedUsers().fetch();
 	for (var i = 0; i < users.length; i++) {
 		var user = users[i];
-		if(user.currentlyWorkingOn.name)
+		if(user.currentlyWorkingOn && user.currentlyWorkingOn.name)
 		{//http://bl.ocks.org/mbostock/4061961
 		var selector = "tr#user_"+user._id+" td.currentProgress svg";
 
-	var margin = {top: 5, right: 40, bottom: 5, left: 10},
-		    width = $('td.currentProgress').width() - margin.left - margin.right,
-		    height = 50 - margin.top - margin.bottom;
+		var margin = {top: 5, right: 40, bottom: 5, left: 10};
+		 var   width = $('td.currentProgress').width() - margin.left - margin.right;
+		 var   height = 30 - margin.top - margin.bottom;
 			var chart = d3.bullet() .width(width)
 		    .height(height);
+			var estMins = Math.floor(user.currentlyWorkingOn.estimatedSecs/60);
+			var workendMins = Math.floor(user.currentlyWorkingOn.elapsedSeconds/60);
+			console.log(user);
+			var data = [{"ranges":[workendMins],"measures":[estMins, Math.floor(estMins*1.5)],"markers":[estMins]}];
+			console.log(data);
+			d3.select(selector).data(data) .call(chart);
 
-			d3.select(selector).data([{"title":"Revenue","subtitle":"US$, in thousands","ranges":[150,225,300],"measures":[220,270],"markers":[250]}]) .call(chart);
-/*
-		var chart = d3.bullet()
-		    .width(width)
-		    .height(height);*/
-		//d3.select('.user1').data([{"title":"Revenue","subtitle":"US$, in thousands","ranges":[150,225,300],"measures":[220,270],"markers":[250]}]) .call(chart);
-		 // console.log( $(selector) );
-	    //$(selector).html(user.currentlyWorkingOn.name);
 		}
-	    //Do something
+	    
 	}
-    //this.node = this.find('#video-map');
+    
   };
 
 Template.users.updateUserSearch = function()
