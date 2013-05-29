@@ -36,16 +36,27 @@ Meteor.methods({
 			//this.unblock();
 		 
 		
-			  	AsanaClient.setToken(Meteor.call('getAccessToken'));
-			  	var wp = AsanaClient.getWorkspaces();
+			  	
+			  	try {
+			  		AsanaClient.setToken(Meteor.call('getAccessToken'));
+					  var wp = AsanaClient.getWorkspaces();
+				    } catch(e) {
+				    	throw e;
+				    }
+			  	
 		
 		  return wp;
 	  },
 	  listWorkspaceProjects: function(workspace)
 	  {
+		  try {
+			  var wp = AsanaClient.getWorkspaceProjects(workspace);
+		    } catch(e) {
+		    
+		      return null;
+		    }
 		 
-		  var wp = AsanaClient.getWorkspaceProjects(workspace);
-			 // console.log('pippo');
+			 // 
 			  //return "pippo";
 			  return wp;
 	  }

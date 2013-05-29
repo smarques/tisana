@@ -12,7 +12,7 @@
     <tbody>
 {{#each users}}
 	<tr class="user" id="user_{{_id}}">
-		<td class="username">
+		<td class="username {{#if currentlyWorkingOn.elapsedSeconds}}active{{/if}}">			
 			{{profile.name}}
 		</td>
 		<td>

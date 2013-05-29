@@ -116,7 +116,16 @@ input.fee,span.fee{
 }
 td.fee{ width:80px;text-align:right}
 td.username{
-	width:250px;
+	
+	background-image: url(/img/status-offline.png);
+	 background-position: 1px 12px;
+    background-repeat: no-repeat;
+    padding-left: 19px;
+    width: 233px;
+}
+td.username.active
+{
+	background-image: url(/img/status-online.png);
 }
 td.currentProgress {
 	width:400px;

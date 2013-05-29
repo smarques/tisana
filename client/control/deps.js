@@ -12,8 +12,10 @@ Deps.autorun(function() {
 				 
 				  userManagement.requestReauthorization(err);
 				  }
-
+			  else
+				 {
 			  Session.set('workspaces', data);
+		  		}
 			});
 	  }
 	  else
@@ -57,3 +59,9 @@ Deps.autorun(function() {
 		  Meteor.subscribe('allUsers');
 	  }
 	});
+/*
+Deps.autorun(function() {
+	 	Session.set('runningTaskId',null);
+	 	Session.set('runningTaskId',null);
+	 	Session.get('runningTaskName',null) ;
+	});*/

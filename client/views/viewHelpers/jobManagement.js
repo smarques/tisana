@@ -40,8 +40,9 @@ jobManagement = {
 		},
 		haveRunningJobs : function()
 		{
-			var currentRunning = Session.get('runningTaskId');
-			return(currentRunning != null);
+			return !Session.equals('runningTaskId',null);
+			/*var currentRunning = Session.get('runningTaskId');
+			return(currentRunning != null);*/
 		},
 		stopRunningJobs : function()
 		{
@@ -54,40 +55,37 @@ jobManagement = {
 				
 				if(elapsed)
 				{
-					Tasks.update({_id:id}, {$inc:{workedSecs:elapsed}});
-					jobManagement.addSessionTimeOnTask(elapsed, id );
+					//Tasks.update({_id:id}, {$inc:{workedSecs:elapsed}});
+					//jobManagement.addSessionTimeOnTask(elapsed, id );
 				}
 				
-				
+				/*
 
 				Session.set('runningTaskName',null);
 				Session.set('runningTaskId',null);
 				Session.set('runningTaskSeconds', 0 );
 				TaskTimer.stop();
-				TimerElapsedTime=0;
-				Meteor.users.update({_id:Meteor.userId()},
+				TimerElapsedTime=0;*/
+				/*Meteor.users.update({_id:Meteor.userId()},
 						{
 						$set:{
-							'currentlyWorkingOn':
-								{
-									'name':null,
-									'taskId':null,
-									'elapsedSeconds':null
+							'currentlyWorkingOn.elapsedSeconds':null
 									
-								}
+								
 							}
-						});
+						});*/
 			}
 			
 		},
 		startTask : function(task)
 		{
-			TaskTimer.play();
+			//TaskTimer.play();
 			Session.set('runningTaskName',task.details.name);
 			Session.set('runningTaskId',task._id);
 			var estimated = (task.estimatedSecs || 0);
+			var workedSecs = (task.workedSecs || 0);
 			// Session.set('runningTaskSeconds', 0 );
-			
+			/*
 			Meteor.users.update({_id:Meteor.userId()},
 				{
 				$set:{
@@ -95,10 +93,11 @@ jobManagement = {
 						{
 							'name':task.details.name,
 							'taskId':task._id,
-							'estimatedSecs':estimated
+							'estimatedSecs':estimated,
+							'workedSecs':workedSecs
 						}
 					}
-				});
+				});*/
 		},
 
 		addSessionTimeOnTask : function(secs, taskId)
@@ -110,16 +109,18 @@ jobManagement = {
 		},
 		setRunningTaskElapsedSeconds : function(secs)
 		{
+			/*
 			Session.set('runningTaskSeconds', secs );
 			if (secs % 10 == 0) 
 			{
+				console.log('update elapsed Seconds');
 				Meteor.users.update({_id:Meteor.userId()},
 						{
 						$set:{
 							'currentlyWorkingOn.elapsedSeconds':secs
 							}
 						});
-			}
+			}*/
 		}
 
 

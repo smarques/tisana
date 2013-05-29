@@ -7,6 +7,11 @@ Template.footer.helpers({
 	  	  }
 		  return '';
 	  },
+	  'sessionTimeOnJob' : function(){
+		  return 12;
+		 
+		 
+	  },
 	  'selectedTasks':function(){
 		return  jobManagement.getSelectedTasksCount();
 	  },

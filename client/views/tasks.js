@@ -52,9 +52,9 @@ Template.tasks.helpers({
 		if(!this.estimatedSecs) return;
 		return Math.floor(this.estimatedSecs / (3600));
 	},
-	"formatWorkedSessionSecs":function(){
+	/*"formatWorkedSessionSecs":function(){
 		return formatTime(getSessionTimeOnTask(this._id));
-	},
+	},*/
 	"taskHasDetails": function()
 	{
 		return (this.details.notes.length > 0);
@@ -90,13 +90,14 @@ Template.tasks.helpers({
 
 	    'click .stopwatch': function()
 	    {
-	    	
+	    	console.log('clicc');
 	    	var button = $('#'+this._id+" .stopwatch");
-	    	var wasRunning = (this._id == Session.get('runningTaskId') );
+	    	var wasRunning =  Session.equals('runningTaskId',this._id) ;
 	    	
-	    	jobManagement.stopRunningJobs();
+	    	//jobManagement.stopRunningJobs();
 	    	if(!wasRunning)
-	    	{	    		
+	    	{	    	
+	    		
 	    		jobManagement.startTask(this);
 	    	}
 	    	

@@ -7,7 +7,10 @@ userManagement = {
 				  Meteor.logout();
 			  }
 			  else
+				 {
+				  Meteor.logout();
 			  console.log(err);
+				 }
 		  },
 		  
 		  getAllUsers : function(){

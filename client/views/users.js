@@ -1,8 +1,14 @@
 Template.users.rendered = function () {
 	var users = userManagement.getSelectedUsers().fetch();
+	
 	for (var i = 0; i < users.length; i++) {
 		var user = users[i];
-		if(user.currentlyWorkingOn && user.currentlyWorkingOn.name)
+		console.log(user);
+		if(
+				user.currentlyWorkingOn && user.currentlyWorkingOn.name 
+				/*	&& 
+				((user.currentlyWorkingOn.elapsedSeconds + user.currentlyWorkingOn.workedSecs) > 60)*/
+		)
 		{//http://bl.ocks.org/mbostock/4061961
 		var selector = "tr#user_"+user._id+" td.currentProgress svg";
 
@@ -11,8 +17,13 @@ Template.users.rendered = function () {
 		 var   height = 30 - margin.top - margin.bottom;
 			var chart = d3.bullet() .width(width)
 		    .height(height);
-			var estMins = Math.floor(user.currentlyWorkingOn.estimatedSecs/60);
-			var workendMins = Math.floor(user.currentlyWorkingOn.elapsedSeconds/60);
+			var totsecs=user.currentlyWorkingOn.elapsedSeconds + user.currentlyWorkingOn.workedSecs;
+			var workendMins = Math.floor(totsecs/60);
+			
+			if(user.currentlyWorkingOn.estimatedSecs)
+				var estMins = Math.floor(user.currentlyWorkingOn.estimatedSecs/60);
+			else
+				var estMins = workendMins *2;
 			console.log(user);
 			var data = [{"ranges":[workendMins],"measures":[estMins, Math.floor(estMins*1.5)],"markers":[estMins]}];
 			console.log(data);

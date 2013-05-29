@@ -16,13 +16,13 @@ formatTime = function (seconds)
 	    if (seconds < 10) {seconds = "0"+seconds;}
 	    var time    = hours+':'+minutes+':'+seconds;
 	    return time;
-}
+};
 getSessionTimeOnTask = function(taskId)
 {
 	var st = Session.get('timeOnTasks') || {};
 	if(st[taskId]){return st[taskId];}
 	return 0;
-}
+};
 getSessionTotalTime = function()
 {
 	var st = Session.get('timeOnTasks') || {};
@@ -33,5 +33,17 @@ getSessionTotalTime = function()
 	}
 	var current = Session.get('runningTaskSeconds');
 	return tot + current;
-}
+};
+/*
+getSessionTimeOnActiveTask = function()
+{
+	 var id = Session.get('runningTaskId');
+	 if(!id) return null;
+	  var sessTime = getSessionTimeOnTask(id);
+	  if( sessTime )
+	  {
+		 return sessTime;
+  	  }
+	  return null;
+};*/
 

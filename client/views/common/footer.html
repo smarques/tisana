@@ -5,9 +5,11 @@
 	{{/if}}
 <div id="totalSessionTime">
 {{#if totalSessionTime}}
-	Total Work Time in this session: <span class="time">{{totalSessionTime}}</span>
+	
+	Session Time: <span class="time">{{totalSessionTime}}</span>
 	{{/if}}
 {{#if runningTaskShortName}}
+Session Time on Job: <span class="time">{{sessionTimeOnJob}}</span>
 	Working on: <span>{{runningTaskShortName}}...</span>
 	  <button id="cronWatchButtonCurrent" class="stopwatch btn btn-danger" type="button">STOP</button>
 	{{/if}}
