@@ -8,9 +8,9 @@ Template.footer.helpers({
 		  return '';
 	  },
 	  'sessionTimeOnJob' : function(){
-		  return 12;
-		 
-		 
+		   return formatTime(getSessionTimeOnTask(Session.get('runningTaskId')) + Session.get('runningTaskSeconds'));
+
+
 	  },
 	  'selectedTasks':function(){
 		return  jobManagement.getSelectedTasksCount();
@@ -23,7 +23,7 @@ Template.footer.helpers({
 		  if( Session.get('runningTaskName'))
 		  return Session.get('runningTaskName');
 	  }
-	  
+
 });
 Template.footer.events({
 	'click #cronWatchButtonCurrent':function()

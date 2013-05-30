@@ -158,7 +158,7 @@ span.estimatedTimeInput input{
 .currentProgress { font: 10px sans-serif; }
 .currentProgress .marker { stroke: #000; stroke-width: 2px; }
 .currentProgress .tick line { stroke: #666; stroke-width: .5px; }
-.currentProgress .range.s0 { fill: #eee; }
+.currentProgress .range.s0 { fill: #D9BBBB; }
 .currentProgress .range.s1 { fill: #ddd; }
 .currentProgress .range.s2 { fill: #ccc; }
 .currentProgress .measure.s0 { fill: #D97534; }

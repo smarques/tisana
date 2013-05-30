@@ -3,7 +3,7 @@ Template.users.rendered = function () {
 	
 	for (var i = 0; i < users.length; i++) {
 		var user = users[i];
-		console.log(user);
+		//console.log(user);
 		if(
 				user.currentlyWorkingOn && user.currentlyWorkingOn.name 
 				/*	&& 
@@ -17,16 +17,16 @@ Template.users.rendered = function () {
 		 var   height = 30 - margin.top - margin.bottom;
 			var chart = d3.bullet() .width(width)
 		    .height(height);
-			var totsecs=user.currentlyWorkingOn.elapsedSeconds + user.currentlyWorkingOn.workedSecs;
+			var totsecs=(user.currentlyWorkingOn.elapsedSeconds || 0 )+ (user.currentlyWorkingOn.workedSecs || 0);
 			var workendMins = Math.floor(totsecs/60);
 			
 			if(user.currentlyWorkingOn.estimatedSecs)
 				var estMins = Math.floor(user.currentlyWorkingOn.estimatedSecs/60);
 			else
 				var estMins = workendMins *2;
-			console.log(user);
+			//console.log(user);
 			var data = [{"ranges":[workendMins],"measures":[estMins, Math.floor(estMins*1.5)],"markers":[estMins]}];
-			console.log(data);
+			//console.log(data);
 			d3.select(selector).data(data) .call(chart);
 
 		}

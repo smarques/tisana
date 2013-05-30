@@ -32,7 +32,9 @@ getSessionTotalTime = function()
 		tot+=st[el];
 	}
 	var current = Session.get('runningTaskSeconds');
-	return tot + current;
+  if(current)
+    tot += current;
+	return tot;
 };
 /*
 getSessionTimeOnActiveTask = function()

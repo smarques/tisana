@@ -18,7 +18,7 @@
 				<p>
 				<a href="javascript:" class="taskname" data-toggle="collapse" data-target="#taskdetails_{{_id}}">{{details.name}}
 				</a>
-			
+
 				</p>
 				<p class="taskdetails collapse" id="taskdetails_{{_id}}" >{{details.notes}}</p>
 				{{else}}
@@ -27,13 +27,13 @@
 				{{#each tags}}
 						<span class="label tag">{{name}}</span>
 				{{/each}}
-				
-			 	
+
+
 		</td>
-		<td class="dueDate"> 
+		<td class="dueDate">
 		<span class="label date">{{dueDate}}</span>
-		</td>	
-		<td class="estimatedTime"> 
+		</td>
+		<td class="estimatedTime">
 		<span class="{{#if isAdmin}}editable{{/if}} estimatedSecs">{{formatEstimatedSecs}}</span>
 		{{#if isAdmin}}
 		<span class="estimatedTimeInput" style="display:none" >
@@ -41,18 +41,20 @@
 			<input  class="estimatedMins" type="text" value="{{estimatedMins}}"/>m
 		</span>
 		{{/if}}
-		</td>	
+		</td>
 		<td class="workedTime">
-		{{formatWorkedSecs}}
-		
-		</td>		
+		{{formatWorkedSecs}} 
+
+		</td>
 		<td>
+      {{#isolate}}
 		{{#if taskIsRunning}}
 		  <button id="cronWatchButton_{{_id}}" class="stopwatch btn btn-primary btn-danger" type="button">STOP</button>
 		{{else}}
 		  <button id="cronWatchButton_{{_id}}" class="stopwatch btn btn-primary" type="button">START</button>
 		{{/if}}
-		</td>	
+      {{/isolate}}
+		</td>
 	</tr>
 {{/each}}
  </tbody>
