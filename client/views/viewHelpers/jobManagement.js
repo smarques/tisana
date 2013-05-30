@@ -113,7 +113,7 @@ jobManagement = {
 			Session.set('runningTaskSeconds', secs );
 			if (secs % 30 == 0)
 			{
-				console.log('update elapsed Seconds');
+				
 				Meteor.users.update({_id:Meteor.userId()},
 						{
 						$set:{

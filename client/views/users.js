@@ -26,7 +26,7 @@ Template.users.rendered = function () {
 				var estMins = workendMins *2;
 			//console.log(user);
 			var data = [{"ranges":[workendMins],"measures":[estMins, Math.floor(estMins*1.5)],"markers":[estMins]}];
-			//console.log(data);
+			console.log(data);
 			d3.select(selector).data(data) .call(chart);
 
 		}
