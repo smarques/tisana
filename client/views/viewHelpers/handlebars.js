@@ -12,3 +12,10 @@ Handlebars.registerHelper('online', function(showError) {
 	console.log(Meteor.status());
 	 return true;
 	});
+Handlebars.registerHelper('routeTo', function(page) {
+	
+	return (Meteor.Router[page+'Path']());
+
+	
+	});
+

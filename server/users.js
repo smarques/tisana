@@ -3,7 +3,7 @@ Accounts.onCreateUser(function(options, user){
   
   
   // if this is the first user ever, make them an admin, (stolen from meteor-teloscope, thank you!)
-  if ( !Meteor.users.find().count() )
+  if ( appSettings.everyoneIsAdmin === true || (!Meteor.users.find().count()) )
 	  {
     user.isAdmin = true;
     user.profile.role='admin';
@@ -11,6 +11,7 @@ Accounts.onCreateUser(function(options, user){
 	  }
   else
 	  {
+	
 	  user.profile.role='user';
 	  }
   return user;

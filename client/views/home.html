@@ -1,0 +1,32 @@
+<template name="home">
+<h1>Welcome to Tisana</h1>
+<h3>Tisana is a <a href="http://meteor.com/">Meteor app</a> that acts as a time tracking client for <a href="http://asana.com">Asana</a> .</h3> 
+<p>
+If you login with your asana account, you can log your work time on your tasks.<br />
+You can browse tasks by workspace / project or search. <br />
+A cache of your assigned tasks is kept locally in <a href="http://www.mongodb.org/">Mongo</a> and you can resync anytime with Asana.<br />
+The app logs your total time on each project as well as a journal of worked time per task per day.
+<br />This enables detailed workload reporting and analysis. (in the works).<br />
+</p>
+<p>
+If you are an administrator you can set estimated completion time for each task, and see which user is working on which task,
+along with a graph comparing worked time vs estimated time.<br />
+You can also set an hourly cost for each user, which will later be used for budgeting functions.
+
+</p>
+<p>
+In demo mode (if you see this you probably ARE in demo mode) every user is automatically made admin.<br />
+<b>Your data is safe</b>: if you login you will ONLY see the data regarding your tasks and the users you are working with in your asana workspaces. <br />
+No information spilling. And the data on this demo will be automatically deleted after some time.
+
+</p>
+<p>
+If you like it and find it useful I suggest you <a href="https://github.com/smarques/tisana">download Tisana</a> and try it on your own server. <br />
+If you want to help <a href="https://github.com/smarques/tisana">fork the project on GitHub</a>. Contributions are very welcome.
+
+
+</p>
+<p>
+BTW, Tisana is alpha quality software, it's provided "as is", it might set your house on fire, break your guitar strings, teach your cat bad tricks, etc etc whatever, check the source if you want to feel safe from evil. :D
+</p>
+</template>

@@ -2,6 +2,9 @@
 body{
 	padding-top:50px;
 }
+.container.mainContent {
+	margin-bottom:30px;
+}
 /********** clearable inputs *****/
 input.clearable{
 	border-width:0;

@@ -1,7 +1,7 @@
 <template name="footer">
 <div id="footer" class="navbar navbar-fixed-bottom">
 {{#if selectedTasks}}
-<div id="selectedTasks"><a href="/">{{selectedTasks}} selected tasks</a></div>
+<div id="selectedTasks"><a href="{{routeTo "tasks"}}/">{{selectedTasks}} selected tasks</a></div>
 	{{/if}}
 <div id="totalSessionTime">
 {{#if totalSessionTime}}

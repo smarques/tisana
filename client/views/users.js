@@ -65,7 +65,7 @@ Template.users.helpers({
 	"canDemote":function()
 	{
 		
-		return (this._id!= Meteor.userId() && this.profile.role != 'user' && usersLib.isAdmin(Meteor.user()));
+		return ((!appSettings.everyoneIsAdmin) && this._id!= Meteor.userId() && this.profile.role != 'user' && usersLib.isAdmin(Meteor.user()));
 	},
 	'formattedFee':function()
 	{
