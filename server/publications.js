@@ -26,7 +26,15 @@ Meteor.publish('userWorkspaceTasks', function (wsId) {
 Meteor.publish('allUsers', function() {
 	  if (this.userId && usersLib.isAdminById(this.userId)) {
 	    // if user is admin, publish all fields
-	    return Meteor.users.find({},{'currentlyWorkingOn':1});
+		 
+		  var userDetails = Meteor.users.findOne({_id : this.userId});
+		  var connectedUsers = userDetails.connectedUsers || [];
+		  if(!connectedUsers.length)
+			 {
+		  connectedUsers[0] = userDetails.services.asana.id;
+			 }
+		  var query = {"services.asana.id":{ $in:connectedUsers } };
+	    return Meteor.users.find(query,{'currentlyWorkingOn':1});
 	  }else{
 		  return false;
 	  }

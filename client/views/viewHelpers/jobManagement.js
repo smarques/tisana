@@ -51,9 +51,33 @@ jobManagement = {
 
 				var elapsed = Session.get('runningTaskSeconds');
 				var id = currentRunning;
-
+				
 				if(elapsed)
 				{
+					var theTask = Tasks.find({_id:id}).fetch();
+					theTask = theTask[0];
+					var theDate = new Date();
+					var theDateString = ''+theDate.getFullYear()+((theDate.getMonth()>9)?'':'0')+(theDate.getMonth()+1)+((theDate.getDate()>9)?'':'0')+theDate.getDate();
+					/*console.log(theTask);
+					console.log(theTask.details);		*/			
+					if(!(theTask.journal) || !(theTask.journal[theDateString]) || !(theTask.journal[theDateString][Meteor.userId()]) )
+					{
+
+						var setModifier = { $set: {} };
+						setModifier.$set['journal.' + theDateString + '.'+Meteor.userId()] = elapsed;
+						
+						Tasks.update({_id:id},setModifier);
+						
+					}
+					else
+					{
+						var setModifier = { $inc: {} };
+						setModifier.$inc['journal.' + theDateString + '.'+Meteor.userId()] = elapsed;
+						
+						Tasks.update({_id:id},setModifier);
+						//console.log(setModifier);
+					}
+					
 					Tasks.update({_id:id}, {$inc:{workedSecs:elapsed}});
 					jobManagement.addSessionTimeOnTask(elapsed, id );
 				}
