@@ -1,7 +1,7 @@
 tisana
 ======
 
-A rich Asana client written in Meteor, planned features are TimeTracking, Budgeting, Statistics and Reporting.
+A rich Asana client written in Meteor, planned features are TimeTracking, Budgeting, Statistics and Reporting. Demo at http://tisana.meteor.com/
 
 I really like Asana, and I love Meteor.js, so I figured I could try and write a client that adds some features to the standard Asana app.
 
