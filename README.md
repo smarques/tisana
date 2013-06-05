@@ -44,7 +44,7 @@ Tisana uses the excellent meteorite package manager for meteor. So start it with
 
 sudo mrt
 
-### Used technologies
+###  technologies used
 
 - Meteor.js + Meteorite
 - jquery.timer.js
